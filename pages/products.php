@@ -16,14 +16,14 @@
     </div>
  <nav>
     <ul id="MenuItems">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="products.html">Products</a></li>
+        <li><a href="index.php">Home</a></li>
+        <li><a href="products.php">Products</a></li>
         <li><a href="">About</a></li>
         <li><a href="">Contact</a></li>
-        <li><a href="login.html">Account</a></li>
+        <li><a href="login.php">Account</a></li>
       </ul>
 </nav>
-<a href="cart.html"><img src="../images/cart.svg" width="30px" height="30px"></a>
+<a href="cart.php"><img src="../images/cart.svg" width="30px" height="30px"></a>
 <img src="../images/menu bar.png" class="menu-icon" onclick="menutoggle()">
 </div> 
    
@@ -147,8 +147,8 @@
    </div>
   <div class="page-btn">
     <span>1</span>
-    <span><a href="bags.html">2</a></span>
-    <span><a href="utensils.html">3</a></span>
+    <span><a href="bags.php">2</a></span>
+    <span><a href="utensils.php">3</a></span>
     <span>4</span>
     <span>&#8594;</span>
 

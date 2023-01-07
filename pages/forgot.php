@@ -71,7 +71,7 @@
                 <input type="number" id="code" name="code" style="width:69.5%;height: 30px;border-radius:10px;border-color: blue;"><br>
             </form>
             <button type="button" class="button1"  onclick="alert('Details Submitted successfully')">Log in</button><br>
-            Back to <a href="login.html">log in</a> page<br>
+            Back to <a href="login.php">log in</a> page<br>
             <p id="cr">&#169 2022</p>
         </section>
         </article>

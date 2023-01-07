@@ -13,25 +13,25 @@
 <div class="container">
  <div class="navbar">
     <div class="logo">
-    <a href="index.html"><img src="../images/logo.png"  length="120px" width="155px"></a>
+    <a href="index.php"><img src="../images/logo.png"  length="120px" width="155px"></a>
     </div>
  <nav>
     <ul id="MenuItems">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="products.html">Products</a></li>
+        <li><a href="index.php">Home</a></li>
+        <li><a href="products.php">Products</a></li>
         <li><a href="">About</a></li>
         <li><a href="">Contact</a></li>
-        <li><a href="login.html">Account</a></li>
+        <li><a href="login.php">Account</a></li>
       </ul>
 </nav>
-<a href="cart.html"><img src="../images/cart.svg" width="30px" height="30px"></a>
+<a href="cart.php"><img src="../images/cart.svg" width="30px" height="30px"></a>
 <img src="../images/menu bar.png" class="menu-icon" onclick=menutoggle()>
 </div> 
 <div class="row">
     <div class="col-2">
         <h1>Every Product<br>Delivered To You!</h1>
         <p>The best products with a quick delivery</p>
-        <a href="products.html"class="btn">Explore Now &#8594;</a>
+        <a href="products.php"class="btn">Explore Now &#8594;</a>
     </div>
     <div class="col-2">
        <img src="../images/smile.png" >

@@ -118,6 +118,9 @@ p{
      left: 50%;
      transform: translateX(-50%);
 }
+
+
+
 h4{
     color: #555;
     font-weight: bold ;
@@ -196,6 +199,10 @@ small{
     -ms-flex-align: center;
     color:aliceblue;
 }
+
+img.menu-icon {
+    display: none;
+}
 ul{
    list-style-type: none;
 }
@@ -241,11 +248,13 @@ ul{
     nav ul li a{
        color: blue; 
     }
-    .menu-icon{
+    img.menu-icon{
         display: block;
         cursor: pointer;
     }
 }
+
+
 /*---All products page--*/
 .row-2{
     justify-content: space-between;

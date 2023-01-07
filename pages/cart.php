@@ -3,7 +3,7 @@
 <head>
     <meta chartset="UFT-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Account - SHOPIFY</title>
+    <title>All Products - SHOPIFY</title>
     <link rel="stylesheet" href="../css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -16,49 +16,76 @@
     </div>
  <nav>
     <ul id="MenuItems">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="products.html">Products</a></li>
+        <li><a href="index.php">Home</a></li>
+        <li><a href="products.php">Products</a></li>
         <li><a href="">About</a></li>
         <li><a href="">Contact</a></li>
-        <li><a href="">Account</a></li>
+        <li><a href="login.php">Account</a></li>
       </ul>
 </nav>
-<img src="../images/cart.svg" width="30px" height="30px">
+<a href="cart.php"><img src="../images/cart.svg" width="30px" height="30px"></a>
 <img src="../images/menu bar.png" class="menu-icon" onclick="menutoggle()">
 </div> 
+   
 </div>
-<!--account page-->
-<div class="account-page">
-    <div class="container">
-        <div class="row">
-            <div class="col-2">
-                <img src="../images/smile.png" width="100%">
-            </div>
-            <div class="col-2">
-                <div class="form-container">
-                    <div class="form-btn">
-                        <span onclick="login()">Login</span>
-                        <span onclick="register()">Register</span>
-                        <hr id="Indicator">
-                    </div>
-                    <form id="LoginForm">
-                        <input type="text" placeholder="Username">
-                        <input type="password" placeholder="Password">
-                        <button type="submit" class="btn"><a href="products.html">Login</a></button>
-                        <a href="forgot1.html">Forgot password</a>
-                    </form>
-                    <form id="RegForm">
-                        <input type="text" placeholder="Username">
-                        <input type="email" placeholder="Email">
-                        <input type="password" placeholder="Password">
-                        <button type="submit" class="btn" onclick="alert('Details submitted successfully')">Register</button>
-                    </form>
+<!--cart items details-->
+<div class="small-container cart-page">
+    <table>
+        <tr>
+            <th>Product</th>   
+            <th>Quantity</th>  
+            <th>Subtotal</th>  
+        </tr>
+        <tr>
+            <td>
+              <div class="cart-info">
+                <img src="../images/prod3i.jpg">
+                <div>
+                    <p>Apple iPad Pro 11 2020 256GB WiFi + Cellular Space Grey</p>
+                    <small>Price:KSh.199,999</small>
+                    <br>
+                    <a href="">Remove</a>
                 </div>
-            </div>
-        </div>
+              </div>
+            </td>
+            <td><input type="number" value="1" min="1"></td>
+            <td>KSh.199,999</td>
+        </tr>
+        <tr>
+            <td>
+              <div class="cart-info">
+                <img src="../images/prod2.jpg">
+                <div>
+                    <p>Samsung Galaxy Note 20 5G</p>
+                    <small>Price:KSh.80,999</small>
+                    <br>
+                    <a href="">Remove</a>
+                </div>
+              </div>
+            </td>
+            <td><input type="number" value="1" min="1"></td>
+            <td>KSh.80,999</td>
+        </tr>
+    </table>
+    <div class="total-price">
+        <table>
+            <tr>
+                <td>Subtotal</td>
+                <td>KSh.200,000</td>
+            </tr>
+            <tr>
+                <td>Delivery Fee</td>
+                <td>KSh.200,000</td>
+            </tr>
+            <tr>
+                <td>Total</td>
+                <td>KSh.200,000</td>
+            </tr>
+        </table>
     </div>
 </div>
 
+  
 <!--footer-->
 <div class="footer">
     <div class="container">
@@ -104,25 +131,6 @@
             }
 
      }
-</script>
-<!--js for toggle form-->
-<script>
-    var LoginForm = document.getElementById("LoginForm");
-    var RegForm = document.getElementById("RegForm");
-    var Indicator = document.getElementById("Indicator");
-
-    function register()
-    {
-        RegForm.style.transform = "translateX(0px)";
-        LoginForm.style.transform = "translateX(0px)";
-        Indicator.style.transform = "translateX(100px)";
-    }
-    
-    function login(){s
-        RegForm.style.transform = "translateX(300px)";
-        LoginForm.style.transform = "translateX(300px)";
-        Indicator.style.transform = "translateX(0px)";
-    }
 </script>
 
 </body>

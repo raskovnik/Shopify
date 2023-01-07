@@ -16,14 +16,14 @@
     </div>
  <nav>
     <ul id="MenuItems">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="products.html">Products</a></li>
+        <li><a href="index.php">Home</a></li>
+        <li><a href="products.php">Products</a></li>
         <li><a href="">About</a></li>
         <li><a href="">Contact</a></li>
         <li><a href="">Account</a></li>
       </ul>
 </nav>
-<a href="cart.html"><img src="cart.svg" width="30px" height="30px"></a>
+<a href="cart.php"><img src="cart.svg" width="30px" height="30px"></a>
 <img src="../images/menu bar.png" class="menu-icon" onclick="menutoggle()">
 </div> 
 </div>
@@ -44,7 +44,7 @@
                         <input type="email" placeholder="Email">
                         <input type="text" placeholder="New Password">
                         <input type="text" placeholder="Confirm Password">
-                        <button type="submit" class="btn" onclick="alert('Details submitted successfully')"><a href="account.html">Register</a></button>
+                        <button type="submit" class="btn" onclick="alert('Details submitted successfully')"><a href="account.php">Register</a></button>
                     </form>
                 </div>
             </div>
