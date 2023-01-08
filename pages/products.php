@@ -1,3 +1,7 @@
+<?php
+    include "../scripts/connect.php";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,7 +18,18 @@
     <div class="logo">
         <img src="../images/logo.png"  length="120px" width="155px">
     </div>
+    <form method="POST">
+        <input type="text" name="search" style="width: 65%" placeholder="Search products">
+        <input type="submit" name="submit" value="Search" style="width: 30%">
+    </form>
+
+    <?php
+        if (isset($_POST["submit"])) {
+            header("location:../scripts/search_results.php?search=".$_POST['search']);
+        }
+    ?>
  <nav>
+
     <ul id="MenuItems">
         <li><a href="index.php">Home</a></li>
         <li><a href="products.php">Products</a></li>
@@ -42,7 +57,7 @@
         </select>
     </div>
   <div class="row">
-       <div class="col-4">
+    <div class="col-4">
         <img src="../images/prod2.jpg">
         <h4>Samsung Galaxy Note 20 5G</h4>
         <div class="rating">
