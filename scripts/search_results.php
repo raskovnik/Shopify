@@ -10,7 +10,37 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body style='text-align: center'>
+    <div class="container">
+    <div class="navbar">
+        <div class="logo">
+            <img src="../images/logo.png"  length="120px" width="155px">
+        </div>
+        <form method="POST">
+            <input type="text" name="search" style="width: 65%" placeholder="Search products">
+            <input type="submit" name="submit" value="Search" style="width: 30%">
+        </form>
+
+        <?php
+            if (isset($_POST["submit"])) {
+                header("location:../scripts/search_results.php?search=".$_POST['search']);
+            }
+        ?>
+    <nav>
+
+        <ul id="MenuItems">
+            <li><a href="../pages/index.php">Home</a></li>
+            <li><a href="../pages/products.php">Products</a></li>
+            <li><a href="">About</a></li>
+            <li><a href="">Contact</a></li>
+            <li><a href="../pages/login.php">Account</a></li>
+        </ul>
+    </nav>
+    <a href="../pages/cart.php"><img src="../images/cart.svg" width="30px" height="30px"></a>
+    <img src="../images/menu bar.png" class="menu-icon" onclick="menutoggle()">
+    </div> 
     
+    </div>
+    </div>
     <?php
         include "connect.php";
         $product = $_GET["search"];
@@ -19,20 +49,30 @@
 
         if ($result) {
             if (mysqli_num_rows($result) > 0) {
+                echo '<h2 style="text-align: left">Search results for '.$product.'</h2>';
                 echo '<div class="row">';
                 while ($row = mysqli_fetch_assoc($result)) {
-                    echo '<div class="col-4">
-                        <img src="../images/prod2.jpg">
-                        <h4>'.$row["description"].'</h4>
-                        <div class="rating">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star-o"></i>
-                        </div>
-                        <p>'.$product.'</p>
-                    </div>';
+                    echo '<a href="../scripts/productDetails.php?product=' . $row["id"] . '">';
+                        echo '<div class="col-4">';
+                            echo '<img src="../images/'.$row["image"].'">';
+                            echo '<p>'.$row["description"].'</p>';
+                            echo '<div class=rating>';
+                            if (floor($row["rating"]) == $row["rating"]) {
+                                for ($i = 1; $i<=floor($row["rating"]); $i++) {
+                                    echo '<i class="fa fa-star"></i>';
+                                }
+                                echo '<span>(' . $row["rating"] . ')</span>';
+                            } else {
+                                for ($i = 1; $i<$row["rating"]; $i++) {
+                                    echo '<i class="fa fa-star"></i>';
+                                }
+                                echo '<i class="fa fa-star-o"></i>';
+                                echo '<span>(' . $row["rating"] . ')</span>';
+                            }
+                            echo '</div>';
+                            echo '<p>'.$row["price"].'</p>';
+                        echo '</div>';
+                    echo '</a>';
                 }
                 echo '</div>';
             } else {
