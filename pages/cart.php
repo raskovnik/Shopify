@@ -18,9 +18,10 @@
     <ul id="MenuItems">
         <li><a href="index.php">Home</a></li>
         <li><a href="products.php">Products</a></li>
+		<li><a href="fetchItems.php">Ongoing deliveries</a></li>
         <li><a href="">About</a></li>
         <li><a href="">Contact</a></li>
-        <li><a href="login.php">Account</a></li>
+		<li><a href="login.php">Account</a></li>
       </ul>
 </nav>
 <a href="cart.php"><img src="../images/cart.svg" width="30px" height="30px"></a>
