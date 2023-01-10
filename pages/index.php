@@ -1,3 +1,7 @@
+<?php
+    include "../scripts/connect.php";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -40,7 +44,9 @@
 </div>
 </div>
 <!--featured categories-->
-
+<?php
+    echo $_SESSION['username'];
+?>
 <div class="categories">
 <div class="small-container">
    <div class="row">

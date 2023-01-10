@@ -108,7 +108,12 @@
                             $_SESSION["username"] = $username;
                             $_session["email"] = $email;
                             $_SESSION["role"] = $role;
-                            header("location:../pages/index.php");
+                            if ($role=="buyer") {
+                                header("location:../pages/index.php");
+                            } else {
+                                header("location:../pages/sellers.php");
+                            }
+                            
                         }
                     }
                 }
