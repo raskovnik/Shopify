@@ -21,6 +21,17 @@
             include "navbar2.php";
         }
     ?>
+<div class="row">
+    <div class="col-2">
+        <h1>Every Product<br>Delivered To You!</h1>
+        <p>The best products with a quick delivery</p>
+        <a href="products.php"class="btn">Explore Now &#8594;</a>
+    </div>
+    <div class="col-2">
+       <img src="../images/smile.png" >
+    </div>
+</div>
+
 <!--featured categories-->
 <div class="categories">
 <div class="small-container">

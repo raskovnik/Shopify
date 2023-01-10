@@ -41,16 +41,6 @@
 <a href="cart.php"><img src="../images/cart.svg" width="30px" height="30px"></a>
 <img src="../images/menu bar.png" class="menu-icon" onclick=menutoggle()>
 </div> 
-<div class="row">
-    <div class="col-2">
-        <h1>Every Product<br>Delivered To You!</h1>
-        <p>The best products with a quick delivery</p>
-        <a href="products.php"class="btn">Explore Now &#8594;</a>
-    </div>
-    <div class="col-2">
-       <img src="../images/smile.png" >
-    </div>
-</div>   
 </div>
 </div>
 </body>
