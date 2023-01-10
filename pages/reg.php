@@ -1,3 +1,8 @@
+<?php
+    session_start();
+    include "../scripts/connect.php";
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -67,15 +72,48 @@
             <div class="login">
 
             <h2>Register</h2> 
-            <form class="n">
+            <form class="n" method="POST", action="reg.php">
                 <label for="name"><h4>Enter your name</h4></label><br>
                 <input type="text" id="name" name="name" style="width:69.5%;height: 30px;border-radius:10px;border-color: blue;"><br>
                 <label for="email"><h4>Enter your email address</h4></label><br>
                 <input type="text" id="email" name="email"  style="width:69.5%;height: 30px;border-radius:10px;border-color: blue;"><br>
                 <label for="pwd"><h4>Password</h4></label><br>
                 <input type="password" id="pwd" name="pwd" style="width:69.5%;height: 30px;border-radius:10px;border-color: blue;"><br>
+                <label for="pwd"><h4>Confirm Password</h4></label><br>
+                <input type="password" id="pwd" name="cpwd" style="width:69.5%;height: 30px;border-radius:10px;border-color: blue;"><br><br>
+                <input type="radio" id="seller" name="role" value="seller">
+                <label for="seller">Seller</label>
+                <input type="radio" id="buyer" name="role" value="buyer">
+                <label for="buyer">Buyer</label><br><br>
+
+                <input type="submit" name="submit" value="Submit">
             </form>
-            <button type="button" class="button1"  onclick="alert('Details Submitted successfully')">Register</button><br>
+            
+            <?php
+                if (isset($_POST["submit"])) {
+                $username = $_POST["name"];
+                $password = $_POST["pwd"];
+                $cpassword = $_POST["cpwd"];
+                $email = $_POST["email"];
+                $role = $_POST["role"];
+
+                if ($password!=$cpassword) {
+                    echo "Passwords do not match";
+                } else {
+                    if (mysqli_num_rows(mysqli_query($conn, "SELECT * FROM `users` WHERE email='$email'")) > 0) {
+                        echo "The email has a registered account, try logging in.";
+                    } else {
+                        $sql = "INSERT INTO `users`(`email`, `password`, `username`, `role`) VALUES('$email', '$password', '$username', '$role')";
+                        if (mysqli_query($conn, $sql)) {
+                            $_SESSION["username"] = $username;
+                            $_session["email"] = $email;
+                            $_SESSION["role"] = $role;
+                            header("location:../pages/index.php");
+                        }
+                    }
+                }
+                }
+            ?>
             <a href="login.php">Back to log in</a>
             <p id="cr">&#169 2022</p>
         </section>

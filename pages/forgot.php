@@ -62,15 +62,13 @@
             <div class="fpwd">
                 <h2>Forgot Password</h2> 
             
-            <form class="n">
-                <!--<label for="name"><h4>Enter your name</h4></label><br>-->
-               <!--<input type="text" id="name" name="name"><br>-->
+            <form class="n" method = "POST" action="forgot.php">
                 <label for="email"><h4>Enter your email address</h4></label><br>
                 <input type="text" id="email" name="email"  style="width:69.5%;height: 30px;border-radius:10px;border-color: blue;"><br>
                 <label for="code"><h4>Enter six digit code</h4></label><br>
-                <input type="number" id="code" name="code" style="width:69.5%;height: 30px;border-radius:10px;border-color: blue;"><br>
+                <input type="number" id="code" name="code" style="width:69.5%;height: 30px;border-radius:10px;border-color: blue;"><br><br>
+                <input type="submit" name="reset" value="reset"><br><br>
             </form>
-            <button type="button" class="button1"  onclick="alert('Details Submitted successfully')">Log in</button><br>
             Back to <a href="login.php">log in</a> page<br>
             <p id="cr">&#169 2022</p>
         </section>
