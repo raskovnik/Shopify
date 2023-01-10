@@ -77,8 +77,8 @@
                     if (mysqli_num_rows($similar) > 0) {
                         echo '<div class="row">';
                         while ($row = mysqli_fetch_assoc($similar)) {
+                            echo "<div class='col-4'>";
                             echo '<a href="../scripts/productDetails.php?product=' . $row["id"] . '">';
-                                echo '<div class="col-4">';
                                     echo '<img src="../images/'.$row["image"].'">';
                                     echo '<p>'.$row["description"].'</p>';
                                     echo '<div class=rating>';

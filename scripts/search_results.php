@@ -52,8 +52,8 @@
                 echo '<h2 style="text-align: left">Search results for '.$product.'</h2>';
                 echo '<div class="row">';
                 while ($row = mysqli_fetch_assoc($result)) {
+                    echo '<div class="col-4">';
                     echo '<a href="../scripts/productDetails.php?product=' . $row["id"] . '">';
-                        echo '<div class="col-4">';
                             echo '<img src="../images/'.$row["image"].'">';
                             echo '<p>'.$row["description"].'</p>';
                             echo '<div class=rating>';
