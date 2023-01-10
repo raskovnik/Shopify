@@ -1,0 +1,59 @@
+<!DOCTYPE>
+<html>
+    <link rel="stylesheet" href="style.css">
+    <title>
+        Add
+    </title>
+    <body>
+        <?php
+        $servername="localhost";
+        $username="root";
+        $password="";
+        $dbname="shopify";
+
+        $conn = mysqli_connect($servername, $username, $password);
+
+        if (!$conn){
+            die("Connection failed" . mysqli_connect_error());
+        }
+        echo "Connection successful";
+        $conn->close();
+        ?>
+        <div class="log">
+            <article>
+                <section>
+                    <div class="login">
+                        <h2>Add product</h2>
+            <form>
+                <label for="ptype"> Product type: </label>
+                <select id="ptype" name="ptype" required style="width:69.5%;height: 30px;border-radius:10px;border-color: blue;">
+                    <option value="phn" selected>Phones</option>
+                    <option value="tns">Utensils</option>
+                    <option value="bgs">Bags</option>
+                </select>
+            </form>
+            <form>
+                <label for="pname">Product name: </label>
+                <input type="text" id="pname" required name="pname" style="width:69.5%;height: 30px;border-radius:10px;border-color: blue;">
+                </form>
+                <form>
+                <label for="pimage">Product Image :</label>
+                <input type="file" id="pimage" required name="pimage" style="width:69.5%;height: 30px;border-radius:10px;border-color: blue;">
+                </form>
+                <form>
+                <label for="desc">Description : </label>
+                <textarea type="text" required name="desc" id="pdesc" style="width:69.5%;height: 30px;border-radius:10px;border-color: blue;"></textarea>
+                </form>
+                <form>
+                    <label for="price">Price : </label>
+                    <input type="text" required name="price" id="price" value="Kshs. "style="width:69.5%;height: 30px;border-radius:10px;border-color: blue;">
+                    </form>
+            </form>
+            <button id="submit" class="button1" name="submit" onclick="alert('Details Submitted Successfully')">Submit</button>
+            
+            </section>
+            </article>
+            </div>
+        </div>
+    </body>
+</html>
