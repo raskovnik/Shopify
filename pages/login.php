@@ -31,15 +31,13 @@
                     $email = $_POST["email"];
                     $password = $_POST["pwd"];
 
-                $sql = "SELECT * FROM `users` WHERE `email`='$email' AND `password`='$password'";
-                if (mysqli_num_rows(mysqli_query($conn, $sql)) != 1) {
-                    echo "Input correct credentials";
-                } else {
-                    $_SESSION["username"] = $username;
-                    $_session["email"] = $email;
-                    $_SESSION["role"] = $role;
-                    header("location:../pages/index.php");
-                }
+                    $sql = "SELECT * FROM `users` WHERE `email`='$email' AND `password`='$password'";
+                    if (mysqli_num_rows(mysqli_query($conn, $sql)) != 1) {
+                        echo "Input correct credentials";
+                    } else {
+                        $_SESSION["email"] = $email;
+                        header("location:../pages/index.php");
+                    }
                 }
             ?>
         </section>

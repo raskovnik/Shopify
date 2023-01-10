@@ -1,5 +1,7 @@
 <?php
+    session_start();
     include "../scripts/connect.php";
+    echo $_SESSION["email"];
 ?>
 
 <!DOCTYPE html>
