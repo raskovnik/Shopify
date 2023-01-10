@@ -33,8 +33,7 @@
     <ul id="MenuItems">
         <li><a href="index.php">Home</a></li>
         <li><a href="products.php">Products</a></li>
-        <li><a href="">About</a></li>
-        <li><a href="">Contact</a></li>
+		<li><a href="insert.php">Location setting for deliverers</a></li>
         <li><a href="login.php">Account</a></li>
       </ul>
 </nav>
