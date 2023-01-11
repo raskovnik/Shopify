@@ -35,7 +35,7 @@
                 <li><a href="../pages/login.php">Account</a></li>
             </ul>
         </nav>
-        <a href="../pages/cart.php"><img src="../images/cart.svg" width="30px" height="30px"></a>
+        <a href="../pages/.php"><img src="../images/cart.svg" width="30px" height="30px"></a>
         <img src="../images/menu bar.png" class="menu-icon" onclick="menutoggle()">
         </div> 
         
@@ -67,10 +67,11 @@
                     }
                     echo '</div>';
                     echo '<p>'.$row["price"].'</p>';
+                    echo '<a href="../pages/index1.php"><button>Add to Cart</button></a>';
                 echo '</div>';
-                echo '<h3>Similar Products</h3>';
+                echo '<h3>Users also viewed</h3>';
                 $tag = $row["tags"][0];
-                $sql = "SELECT * FROM `products` WHERE description LIKE '%$tag%' and id!=$product";
+                $sql = "SELECT * FROM `products` WHERE tags LIKE '%$tag%' and id!=$product";
                 $similar = mysqli_query($conn, $sql);
 
                 if ($similar) {

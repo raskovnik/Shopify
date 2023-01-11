@@ -44,7 +44,7 @@
     <?php
         include "connect.php";
         $product = $_GET["search"];
-        $sql = "SELECT * FROM `products` WHERE description LIKE '%$product%'";
+        $sql = "SELECT * FROM `products` WHERE tags LIKE '%$product%'";
         $result = mysqli_query($conn, $sql);
 
         if ($result) {

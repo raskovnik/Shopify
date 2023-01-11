@@ -1,4 +1,5 @@
 <?php
+    session_start();
     include "../scripts/connect.php";
 ?>
 
@@ -48,7 +49,6 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
-
 <div class="container">
  <div class="navbar">
     <div class="logo">
@@ -77,6 +77,7 @@
                 <a href="#">Orders</a>
                 <a href="#">Cart</a>
                 <a href="logout.php">Logout</a>
+                <a href='addproduct.php'>Add products</a>;
             </div>
         </div>
         </li>

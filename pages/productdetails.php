@@ -53,7 +53,7 @@
             <option>Starlight Black</option>
           </select>
           <input type="number" value="1">
-          <a href="" class="btn">Add To Cart</a>
+          <a href = "" class="btn">Add to Cart</a>
           <h3>Product Details <i class="fa fa-indent"></i></h3>
           <p>6.43 inches, Qualcomm SM6225 Snapdragon 680 4G (6 nm),Android 12, ColorOS 12.1,8GB RAM,256GB storage,Back: 64MP + 2MP +2MP,Front:32MP,Li-Po 4500 mAh</p>
         </div>
