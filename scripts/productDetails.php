@@ -1,3 +1,7 @@
+<?php
+    session_start();
+    include "connect.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -43,11 +47,18 @@
         </div>
         <?php
             include "connect.php";
+            if (isset($_POST["shop"])) {
+                $res = mysqli_query($conn, "INSERT INTO `cart`(`productId`, `email`, `quantity`) VALUES ($orderid,'$orderid',4)");
+                if ($res) {
+                    header("location:../pages/cart.php?orderId='$orderid'");
+                }
+            }
             $product = $_GET["product"];
             $sql = "SELECT * FROM products WHERE id=$product";
             $result = mysqli_query($conn, $sql);
             if (mysqli_num_rows($result) > 0) {
                 $row = mysqli_fetch_assoc($result);
+                $orderid = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM cart")) + 1;
             echo '</div>';
                 echo '<div class="col-4">';
                     echo '<img style="width: 35%; padding: auto; margin: auto" src="../images/'.$row["image"].'">';
@@ -67,7 +78,10 @@
                     }
                     echo '</div>';
                     echo '<p>'.$row["price"].'</p>';
-                    echo '<a href="../pages/index1.php"><button>Add to Cart</button></a>';
+                    echo '<form method="POST" action="productDetails.php">';
+                    echo '<input type="submit" name="shop" value="Add to Cart">';
+                    echo '</form>';
+
                 echo '</div>';
                 echo '<h3>Users also viewed</h3>';
                 $tag = $row["tags"][0];

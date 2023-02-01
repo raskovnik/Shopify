@@ -1,3 +1,7 @@
+<?php
+session_start();
+    include "../scripts/connect.php"
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,92 +33,37 @@
 </div> 
    
 </div>
-<!--cart items details-->
-<div class="small-container cart-page">
-    <table>
-        <tr>
-            <th>Product</th>   
-            <th>Quantity</th>  
-            <th>Subtotal</th>  
-        </tr>
-        <tr>
-            <td>
-              <div class="cart-info">
-                <img src="../images/prod3i.jpg">
-                <div>
-                    <p>Apple iPad Pro 11 2020 256GB WiFi + Cellular Space Grey</p>
-                    <small>Price:KSh.199,999</small>
-                    <br>
-                    <a href="">Remove</a>
-                </div>
-              </div>
-            </td>
-            <td><input type="number" value="1" min="1"></td>
-            <td>KSh.199,999</td>
-        </tr>
-        <tr>
-            <td>
-              <div class="cart-info">
-                <img src="../images/prod2.jpg">
-                <div>
-                    <p>Samsung Galaxy Note 20 5G</p>
-                    <small>Price:KSh.80,999</small>
-                    <br>
-                    <a href="">Remove</a>
-                </div>
-              </div>
-            </td>
-            <td><input type="number" value="1" min="1"></td>
-            <td>KSh.80,999</td>
-        </tr>
-    </table>
-    <div class="total-price">
-        <table>
-            <tr>
-                <td>Subtotal</td>
-                <td>KSh.200,000</td>
-            </tr>
-            <tr>
-                <td>Delivery Fee</td>
-                <td>KSh.200,000</td>
-            </tr>
-            <tr>
-                <td>Total</td>
-                <td>KSh.200,000</td>
-            </tr>
-        </table>
-    </div>
-</div>
 
-  
-<!--footer-->
-<div class="footer">
-    <div class="container">
-        <div class="row">
-            <div class="footer-col-1">
-                <h3>Download our App</h3>
-                <p>Download App for Android and ios mobile phone</p>
-            <div class="app-logo">
-                <img src="../images/store.jpg">
-            </div>
-        </div>
-            <div class="footer-col-2">
-                <img src="../images/logo.png">
-                <p>Our purpose its to offer a place where you can order high quality products with a first delivery</p>
-            </div>
-            <div class="footer-col-3">
-                <h3>Follow us</h3>
-                <ul>
-                    <li>Facebook</li>
-                    <li>Instagram</li>
-                    <li>Twitter</li>
-                </ul>
-            </div>
-        </div>
-        <hr>
-        <p class="Copyright">Copyright 2022 - SHOPIFY</p>
-    </div>
-</div>
+<?php
+        include "connect.php";
+        $product = $_GET["orderId"];
+        $sql = "SELECT * FROM `cart` WHERE productId='$product'";
+        $result = mysqli_query($conn, $sql);
+        echo "Cart Items";
+        if ($result) {
+            if (mysqli_num_rows($result) > 0) {
+                echo '<div class="row">';
+
+                while ($row = mysqli_fetch_assoc($result)) {
+                    echo '<div class="col-4">';
+                            echo 'Order Number: '.$row["productId"].'<br><br>';
+                            echo 'Quantity: '.$row["quantity"].'';
+                        echo '</div>';
+                    echo '</a>';
+                }
+                echo '</div>';
+            } else {
+                echo "<div style='height: 200px;
+                width: 400px;            
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                margin-top: -100px;
+                margin-left: -200px;'>No product(s) found</div>";
+            }
+            // echo '<a href="../pages/products.php"><button style="width: 30%; background-color: blue; height: 40px">Back</button></a>';
+        }
+    ?>
 <!--js for toggle menu-->
 <script>
     var MenuItems = document.getElementById("MenuItems")
