@@ -1,4 +1,5 @@
 <?php
+    session_start();
     include "../scripts/connect.php";
 ?>
 
@@ -13,24 +14,13 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
-<div class="header">
-<div class="container">
- <div class="navbar">
-    <div class="logo">
-    <a href="index.php"><img src="../images/logo.png"  length="120px" width="155px"></a>
-    </div>
- <nav>
-    <ul id="MenuItems">
-        <li><a href="index.php">Home</a></li>
-        <li><a href="products.php">Products</a></li>
-        <li><a href="">About</a></li>
-        <li><a href="">Contact</a></li>
-        <li><a href="login.php">Account</a></li>
-      </ul>
-</nav>
-<a href="cart.php"><img src="../images/cart.svg" width="30px" height="30px"></a>
-<img src="../images/menu bar.png" class="menu-icon" onclick=menutoggle()>
-</div> 
+    <?php
+        if ($_SESSION["email"]) {
+            include "navbar.php";
+        } else {
+            include "navbar2.php";
+        }
+    ?>
 <div class="row">
     <div class="col-2">
         <h1>Every Product<br>Delivered To You!</h1>
@@ -40,13 +30,9 @@
     <div class="col-2">
        <img src="../images/smile.png" >
     </div>
-</div>   
 </div>
-</div>
+
 <!--featured categories-->
-<?php
-    echo $_SESSION['username'];
-?>
 <div class="categories">
 <div class="small-container">
    <div class="row">

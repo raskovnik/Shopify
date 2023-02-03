@@ -1,3 +1,7 @@
+<?php
+    session_start();
+    include "connect.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -35,7 +39,7 @@
                 <li><a href="../pages/login.php">Account</a></li>
             </ul>
         </nav>
-        <a href="../pages/cart.php"><img src="../images/cart.svg" width="30px" height="30px"></a>
+        <a href="../pages/.php"><img src="../images/cart.svg" width="30px" height="30px"></a>
         <img src="../images/menu bar.png" class="menu-icon" onclick="menutoggle()">
         </div> 
         
@@ -44,12 +48,21 @@
         
         <?php
             include "connect.php";
+            if (isset($_POST["shop"])) {
+                $res = mysqli_query($conn, "INSERT INTO `cart`(`productId`, `email`, `quantity`) VALUES ($orderid,'$orderid',4)");
+                if ($res) {
+                    header("location:../pages/cart.php?orderId='$orderid'");
+                }
+            }
             $product = $_GET["product"];
             $sql = "SELECT * FROM products WHERE id=$product";
             $result = mysqli_query($conn, $sql);
             if (mysqli_num_rows($result) > 0) {
                 $row = mysqli_fetch_assoc($result);
-                echo '</div>';
+
+                $orderid = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM cart")) + 1;
+            echo '</div>';
+
                 echo '<div class="col-4">';
                 echo '<div class="flex-container">';
                     echo '<div><img style="width: 75%; padding: auto; margin: auto" src="../images/'.$row["image"].'"></div>';
@@ -85,6 +98,7 @@
                 echo '</div>';
                 echo '<h3>Similar Products</h3>';
                 $tag = $row["tags"];
+
                 $sql = "SELECT * FROM `products` WHERE tags LIKE '%$tag%' and id!=$product";
                 $similar = mysqli_query($conn, $sql);
 

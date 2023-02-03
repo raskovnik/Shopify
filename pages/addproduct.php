@@ -1,3 +1,8 @@
+<?php
+    session_start();
+    include "../scripts/connect.php";
+?>
+
 <!DOCTYPE>
 <html>
     <link rel="stylesheet" href="../css/login.css">
@@ -40,7 +45,7 @@
                     $description = $_POST["desc"];
                     $qty = $_POST["qty"];
                     $price = $_POST["price"];
-                    $seller = "seller zyz";
+                    $seller = $_SESSION["email"];
                     $image = $_POST["pimage"];
 
                     $sql = "INSERT INTO `products`(`description`, `qty`, `price`, `seller`, `tags`, `image`) VALUES('$description', $qty, $price, '$seller', '$tag', '$image')";
