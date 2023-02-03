@@ -45,6 +45,7 @@
         
         </div>
         </div>
+        
         <?php
             include "connect.php";
             if (isset($_POST["shop"])) {
@@ -58,11 +59,19 @@
             $result = mysqli_query($conn, $sql);
             if (mysqli_num_rows($result) > 0) {
                 $row = mysqli_fetch_assoc($result);
+
                 $orderid = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM cart")) + 1;
             echo '</div>';
+
                 echo '<div class="col-4">';
-                    echo '<img style="width: 35%; padding: auto; margin: auto" src="../images/'.$row["image"].'">';
+                echo '<div class="flex-container">';
+                    echo '<div><img style="width: 75%; padding: auto; margin: auto" src="../images/'.$row["image"].'"></div>';
+                    echo '<div>';
+                    echo '<p><b>Seller</b></p>';
+                    echo '<p><a href="#" bg-color="blue">'.$row["seller"].'</a></p>';
+                    echo '<p><b>Description</b></p>';
                     echo '<p>'.$row["description"].'</p>';
+                    echo '<p><b>Rating</b></p>';
                     echo '<div class=rating>';
                     if (floor($row["rating"]) == $row["rating"]) {
                         for ($i = 1; $i<=floor($row["rating"]); $i++) {
@@ -77,14 +86,19 @@
                         echo '<span>(' . $row["rating"] . ')</span>';
                     }
                     echo '</div>';
-                    echo '<p>'.$row["price"].'</p>';
-                    echo '<form method="POST" action="productDetails.php">';
-                    echo '<input type="submit" name="shop" value="Add to Cart">';
-                    echo '</form>';
-
+                    echo '<p><b>Verified Reviews</b></p>';
+                    echo '<p>'.$row["reviews"].'</p>';
+                    echo '<p><b>In Stock</b></p>';
+                    echo '<p>'.$row["qty"].'</p>';
+                    echo '<p><b>Price</b></p>';
+                    echo '<p>Ksh. '.number_format($row["price"], 2).'</p>';
+                    echo '<button class="btn">Add to Cart</button>';
+                    echo '</div>';
                 echo '</div>';
-                echo '<h3>Users also viewed</h3>';
-                $tag = $row["tags"][0];
+                echo '</div>';
+                echo '<h3>Similar Products</h3>';
+                $tag = $row["tags"];
+
                 $sql = "SELECT * FROM `products` WHERE tags LIKE '%$tag%' and id!=$product";
                 $similar = mysqli_query($conn, $sql);
 
@@ -110,7 +124,7 @@
                                         echo '<span>(' . $row["rating"] . ')</span>';
                                     }
                                 echo '</div>';
-                                echo '<p>'.$row["price"].'</p>';
+                                echo '<p>Ksh. '.number_format($row["price"], 2).'</p>';
                                 echo '</div>';
                             echo '</a>';
                         }
