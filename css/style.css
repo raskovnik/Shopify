@@ -475,3 +475,12 @@ form a{
         display: none;
     }
 }
+
+.flex-container {
+    display:flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 25%;
+    column-gap: 10px;
+    background-color: green;
+}

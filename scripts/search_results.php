@@ -44,7 +44,7 @@
     <?php
         include "connect.php";
         $product = $_GET["search"];
-        $sql = "SELECT * FROM `products` WHERE description LIKE '%$product%'";
+        $sql = "SELECT * FROM `products` WHERE tags LIKE '%$product%'";
         $result = mysqli_query($conn, $sql);
 
         if ($result) {
@@ -61,16 +61,16 @@
                                 for ($i = 1; $i<=floor($row["rating"]); $i++) {
                                     echo '<i class="fa fa-star"></i>';
                                 }
-                                echo '<span>(' . $row["rating"] . ')</span>';
+                                // echo '<span> (' . $row["rating"] . ')</span>';
                             } else {
                                 for ($i = 1; $i<$row["rating"]; $i++) {
                                     echo '<i class="fa fa-star"></i>';
                                 }
                                 echo '<i class="fa fa-star-o"></i>';
-                                echo '<span>(' . $row["rating"] . ')</span>';
+                                // echo '<span> (' . $row["rating"] . ')</span>';
                             }
                             echo '</div>';
-                            echo '<p>'.$row["price"].'</p>';
+                            echo '<p>Ksh. '.number_format($row["price"], 2).'</p>';
                         echo '</div>';
                     echo '</a>';
                 }
