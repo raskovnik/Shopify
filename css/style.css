@@ -334,7 +334,7 @@ input:hover{
     margin: 80 px auto;
 }
 table{
-    width: 100%;
+    width: 75%;
     border-collapse: collapse;
 }
 .cart-info{
@@ -480,7 +480,7 @@ form a{
     display:flex;
     flex-direction: row;
     justify-content: space-around;
-    width: 25%;
+    width: 75%;
     column-gap: 10px;
-    background-color: green;
+    /* background-color: blue; */
 }

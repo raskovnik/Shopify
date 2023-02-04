@@ -11,6 +11,19 @@ session_start();
     <link rel="stylesheet" href="../css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <style>
+        td {
+            padding: 0px;
+            word-wrap: break-word;
+            border-collapse: collapse;
+        }
+        table {
+            table-layout: fixed;
+             border-collapse: collapse;
+            width: 100%;
+        }
+    </style>
 </head>
 <body>
 <div class="container">
@@ -36,32 +49,60 @@ session_start();
 
 <?php
         include "connect.php";
-        $product = $_GET["orderId"];
-        $sql = "SELECT * FROM `cart` WHERE productId='$product'";
-        $result = mysqli_query($conn, $sql);
-        echo "Cart Items";
-        if ($result) {
-            if (mysqli_num_rows($result) > 0) {
-                echo '<div class="row">';
-
-                while ($row = mysqli_fetch_assoc($result)) {
-                    echo '<div class="col-4">';
-                            echo 'Order Number: '.$row["productId"].'<br><br>';
-                            echo 'Quantity: '.$row["quantity"].'';
-                        echo '</div>';
-                    echo '</a>';
+    ?>
+    <table id="cart-table">
+            <th>Item</th>
+            <th>Description</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <?php
+                $total=0;
+                foreach($_SESSION["cart-items"] as $item => $qty) {
+                    $sql = "SELECT * FROM `products` WHERE id=$item";
+                    $result = mysqli_query($conn, $sql);
+                    if ($result) {
+                        $row = mysqli_fetch_assoc($result);
+                        echo '<tr>';
+                            echo '<td><div style="text-align: center;"><img src="../images/' . $row["image"] . '"></div></td>';
+                            echo '<td><p>'.$row["description"].'</p></td>';
+                            echo '<td>';
+                                echo '<form method="POST">';
+                                    echo '<div id="prod-id"><input type="number" name="prod" id="prod" style="display:none" value='.$item.'></div>';
+                                    echo '<input type="number" name="quantity" min="0" value='.$qty.'>';
+                                    echo '<button class="btn" name="update" value="update">Update</button>';
+                                echo '</form>';
+                            echo '</td>';
+                            echo '<td><p>Ksh. '.number_format($row["price"] * $qty, 2).'</p></td>';
+                            $total += $row["price"]* $qty;
+                            
+                        echo '</tr>';
+                    }
                 }
-                echo '</div>';
-            } else {
-                echo "<div style='height: 200px;
-                width: 400px;            
-                position: fixed;
-                top: 50%;
-                left: 50%;
-                margin-top: -100px;
-                margin-left: -200px;'>No product(s) found</div>";
+                echo '<tr>';
+                echo '<td><b>Total<b></td>';
+                echo '<td colspan="3" style="text-align: right;"><b>Ksh. '.number_format($total, 2).'</b><td>';
+                echo '</tr>';
+            ?>
+    </table>
+
+    <?php
+        if (array_key_exists('update', $_POST)) {
+            $pid = $_POST["prod"];
+            foreach($_SESSION["cart-items"] as $item => $qty) {
+                if ($item == $pid) {
+                    $_SESSION["cart-items"][$item] = $_POST["quantity"];
+                    if ($_POST["quantity"] == 0) {
+                        unset($_SESSION["cart-items"][$item]);
+                    }
+                    header("location:cart.php");
+                    
+                }
             }
-            // echo '<a href="../pages/products.php"><button style="width: 30%; background-color: blue; height: 40px">Back</button></a>';
+            foreach($_SESSION["cart-items"] as $item => $qty) {
+                echo $item;
+                echo $qty;
+            }
+            // 
         }
     ?>
 <!--js for toggle menu-->

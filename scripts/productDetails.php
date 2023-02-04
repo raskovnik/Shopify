@@ -39,7 +39,7 @@
                 <li><a href="../pages/login.php">Account</a></li>
             </ul>
         </nav>
-        <a href="../pages/.php"><img src="../images/cart.svg" width="30px" height="30px"></a>
+        <a href="../pages/cart.php"><img src="../images/cart.svg" width="30px" height="30px"></a>
         <img src="../images/menu bar.png" class="menu-icon" onclick="menutoggle()">
         </div> 
         
@@ -47,14 +47,12 @@
         </div>
         
         <?php
-            include "connect.php";
-            if (isset($_POST["shop"])) {
-                $res = mysqli_query($conn, "INSERT INTO `cart`(`productId`, `email`, `quantity`) VALUES ($orderid,'$orderid',4)");
-                if ($res) {
-                    header("location:../pages/cart.php?orderId='$orderid'");
+            $product = $_GET["product"];
+            function add_to_cart($product) {
+                if (!in_array($product, $_SESSION["cart-items"])) {
+                    $_SESSION["cart-items"][$product] = 1;
                 }
             }
-            $product = $_GET["product"];
             $sql = "SELECT * FROM products WHERE id=$product";
             $result = mysqli_query($conn, $sql);
             if (mysqli_num_rows($result) > 0) {
@@ -68,7 +66,7 @@
                     echo '<div><img style="width: 75%; padding: auto; margin: auto" src="../images/'.$row["image"].'"></div>';
                     echo '<div>';
                     echo '<p><b>Seller</b></p>';
-                    echo '<p><a href="#" bg-color="blue">'.$row["seller"].'</a></p>';
+                    echo '<p color="green"><a href="#">'.$row["seller"].'</a></p>';
                     echo '<p><b>Description</b></p>';
                     echo '<p>'.$row["description"].'</p>';
                     echo '<p><b>Rating</b></p>';
@@ -92,8 +90,15 @@
                     echo '<p>'.$row["qty"].'</p>';
                     echo '<p><b>Price</b></p>';
                     echo '<p>Ksh. '.number_format($row["price"], 2).'</p>';
-                    echo '<button class="btn">Add to Cart</button>';
+                    echo '<form method="POST">';
+                        echo '<input type="submit" class="btn" name="buy" id="buy" value="Add to Cart">';
+                    echo '</form>';
                     echo '</div>';
+                    
+                    if (array_key_exists('buy', $_POST)) {
+                        add_to_cart($product);
+                    }
+
                 echo '</div>';
                 echo '</div>';
                 echo '<h3>Similar Products</h3>';
