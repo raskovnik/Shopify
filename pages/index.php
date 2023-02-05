@@ -1,6 +1,9 @@
 <?php
     session_start();
     include "../scripts/connect.php";
+    if (!isset($_SESSION["cart-items"])) {
+        $_SESSION["cart-items"] = [];
+    }
 ?>
 
 <!DOCTYPE html>
