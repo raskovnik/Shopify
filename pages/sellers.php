@@ -35,7 +35,7 @@
 
                     $sql = "INSERT INTO `company` VALUES('$email', '$description', '$payment')";
                     if (mysqli_query($conn, $sql)) {
-                        header("location:../pages/index.php");
+                        header("location:../pages/login.php");
                     }
                 }
             ?>

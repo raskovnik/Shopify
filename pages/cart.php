@@ -7,45 +7,19 @@ session_start();
 <head>
     <meta chartset="UFT-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>All Products - SHOPIFY</title>
+    <title>SHOPIFY</title>
     <link rel="stylesheet" href="../css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <style>
-        td {
-            padding: 0px;
-            word-wrap: break-word;
-            border-collapse: collapse;
-        }
-        table {
-            table-layout: fixed;
-             border-collapse: collapse;
-            width: 100%;
-        }
-    </style>
 </head>
 <body>
-<div class="container">
- <div class="navbar">
-    <div class="logo">
-        <img src="../images/logo.png"  length="120px" width="155px">
-    </div>
- <nav>
-    <ul id="MenuItems">
-        <li><a href="index.php">Home</a></li>
-        <li><a href="products.php">Products</a></li>
-		<li><a href="fetchItems.php">Ongoing deliveries</a></li>
-        <li><a href="">About</a></li>
-        <li><a href="">Contact</a></li>
-		<li><a href="login.php">Account</a></li>
-      </ul>
-</nav>
-<a href="cart.php"><img src="../images/cart.svg" width="30px" height="30px"></a>
-<img src="../images/menu bar.png" class="menu-icon" onclick="menutoggle()">
-</div> 
-   
-</div>
+    <?php
+        if ($_SESSION["email"]) {
+            include "navbar.php";
+        } else {
+            include "navbar2.php";
+        }
+    ?>
 
 <?php
         include "connect.php";

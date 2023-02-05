@@ -72,13 +72,33 @@
         <li><a href="insert.php">Location setting for deliverers</a></li>
         <li>
         <div class="dropdown">
-        <a href="#">Account</a>
-            <div class="dropdown-content">
-                <a href="#">Orders</a>
-                <a href="#">Cart</a>
-                <a href="logout.php">Logout</a>
-                <a href='addproduct.php'>Add products</a>;
-            </div>
+          <?php
+            include "connect.php";
+            if (isset($_SESSION["email"])) {
+              $mail = $_SESSION["email"];
+              $sql = "SELECT * FROM users WHERE `username`='$mail'";
+              $res = mysqli_fetch_assoc(mysqli_query($conn, $sql));
+              if ($res["role"] == "seller") {
+                echo '<a href="#">Account</a>';
+                  echo '<div style="text-align: left" class="dropdown-content">';
+                    echo '<a href="#">Orders</a>';
+                    echo '<a href="#">Details</a>';
+                    echo '<a href="logout.php">Logout</a>';
+                    echo '<a href="#">Add Products</a>';
+                    echo '<a href="#">Update Products</a>';
+                  echo '</div>';
+                echo '</a>';
+              } else {
+              echo '<a href="#">Account</a>';
+                echo '<div style="text-align: left" class="dropdown-content">';
+                  echo '<a href="#">Orders</a>';
+                  echo '<a href="#">Details</a>';
+                  echo '<a href="logout.php">Logout</a>';
+                echo '</div>';
+              echo '</a>';
+              }
+            }
+          ?>
         </div>
         </li>
       </ul>
