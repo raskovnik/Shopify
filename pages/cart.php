@@ -20,10 +20,6 @@ session_start();
             include "navbar2.php";
         }
     ?>
-
-<?php
-        include "connect.php";
-    ?>
     <table id="cart-table">
             <th>Item</th>
             <th>Description</th>
@@ -58,7 +54,19 @@ session_start();
                 echo '</tr>';
             ?>
     </table>
+    <?php
+        if (count($_SESSION["cart-items"]) != 0) {
+            echo '<form method="POST">';
+                echo '<button class="btn" name="clear" style="width: 15%; margin: 10px;">Clear Cart</button>';
+                echo '<button class="btn" name="proceed" style="width: 15%; margin: 10px;">Proceed to Payment</button>';
+            echo '</form>';
+        }
 
+        if (array_key_exists("clear", $_POST)) {
+            $_SESSION["cart-items"] = [];
+            header("location:cart.php");
+        }
+    ?>
     <?php
         if (array_key_exists('update', $_POST)) {
             $pid = $_POST["prod"];
@@ -69,14 +77,12 @@ session_start();
                         unset($_SESSION["cart-items"][$item]);
                     }
                     header("location:cart.php");
-                    
                 }
             }
             foreach($_SESSION["cart-items"] as $item => $qty) {
                 echo $item;
                 echo $qty;
             }
-            // 
         }
     ?>
 <!--js for toggle menu-->
