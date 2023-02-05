@@ -109,7 +109,7 @@
                             $_session["email"] = $email;
                             $_SESSION["role"] = $role;
                             if ($role=="buyer") {
-                                header("location:../pages/index.php");
+                                header("location:../pages/login.php");
                             } else {
                                 header("location:../pages/sellers.php");
                             }
