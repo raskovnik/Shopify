@@ -19,7 +19,7 @@
                     <div class="login">
                         <h2>Add product</h2>
 
-            <form method="POST" action="addproduct.php">
+            <form method="POST" action="addproduct.php" enctype="multipart/form-data">
                 <label for="ptype"> Product type: </label>
                 <select id="ptype" name="ptype" required style="width:69.5%;height: 30px;border-radius:10px;border-color: blue;">
                     <option value="phn" selected>Phones</option>
@@ -46,12 +46,15 @@
                     $qty = $_POST["qty"];
                     $price = $_POST["price"];
                     $seller = $_SESSION["email"];
-                    $image = $_POST["pimage"];
+                    $image = $_FILES["pimage"]["name"];
 
                     $sql = "INSERT INTO `products`(`description`, `qty`, `price`, `seller`, `tags`, `image`) VALUES('$description', $qty, $price, '$seller', '$tag', '$image')";
-
                     if (mysqli_query($conn, $sql)) {
-                        echo "Product added successfully";
+                        if (isset($_FILES["pimage"])) {
+                            $target_dir = "/Shopify/images/";
+                            move_uploaded_file($_FILES['pimage']['tmp_name'], $_SERVER['DOCUMENT_ROOT'].$target_dir.$_FILES['pimage']['name']);
+                            echo "Product added successfully";
+                        }
                     } else {
                         echo "alert('Product not added. Try again')";
                     }

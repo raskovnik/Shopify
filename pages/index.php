@@ -85,7 +85,7 @@
     ?>
     <h2 class="title">Latest Products</h2>
     <?php
-    $sql = "SELECT * FROM products WHERE id>4 and id<=8";
+    $sql = "SELECT * FROM products WHERE id>4";
     $res = mysqli_query($conn, $sql);
     if ($res) {
         echo '<div class="row">';
@@ -105,7 +105,12 @@
                             echo '<i class="fa fa-star"></i>';
                         }
                         echo '<i class="fa fa-star-o"></i>';
-                        echo '<span>(' . $row["rating"] . ')</span>';
+                        if (!is_double( $row["rating"])) {
+                            echo '<span>Rating not available</span>';
+                        } else {
+                            echo '<span>(' . $row["rating"] . ')</span>';
+                        }
+
                     }
                 echo '</div>';
                 echo '<p>'.$row["price"].'</p>';
