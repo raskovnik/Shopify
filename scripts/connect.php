@@ -3,7 +3,7 @@
     $servername = "localhost";
     $username = "root";
     $password = "";
-    $dbname = "shopify";
+    $dbname = "Shopify";
 
     $conn = mysqli_connect($servername, $username, $password);
     if (!$conn) {
