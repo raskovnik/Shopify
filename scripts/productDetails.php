@@ -53,13 +53,10 @@
                     $_SESSION["cart-items"][$product] = 1;
                 }
             }
-            $sql = "SELECT * FROM products WHERE id=$product";
+            $sql = "SELECT * FROM `products` WHERE `id`=$product";
             $result = mysqli_query($conn, $sql);
             if (mysqli_num_rows($result) > 0) {
                 $row = mysqli_fetch_assoc($result);
-
-                $orderid = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM cart")) + 1;
-            echo '</div>';
 
                 echo '<div class="col-4">';
                 echo '<div class="flex-container">';

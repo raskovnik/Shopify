@@ -76,7 +76,7 @@
                         echo '<span>(' . $row["rating"] . ')</span>';
                     }
                 echo '</div>';
-                echo '<p>'.$row["price"].'</p>';
+                echo '<p>Ksh. '.number_format($row["price"], 2).'</p>';
                 echo '</div>';
             echo '</a>';
         }
@@ -105,15 +105,15 @@
                             echo '<i class="fa fa-star"></i>';
                         }
                         echo '<i class="fa fa-star-o"></i>';
-                        if (!is_double( $row["rating"])) {
-                            echo '<span>Rating not available</span>';
+                        if (is_null( $row["rating"])) {
+                            
                         } else {
                             echo '<span>(' . $row["rating"] . ')</span>';
                         }
 
                     }
                 echo '</div>';
-                echo '<p>'.$row["price"].'</p>';
+                echo '<p>Ksh. '.number_format($row["price"], 2).'</p>';
                 echo '</div>';
             echo '</a>';
         }
@@ -206,7 +206,6 @@
                 MenuItems.style.maxHeight = "0px";
  
             }
-
      }
 </script>
 

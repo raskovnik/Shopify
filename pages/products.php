@@ -57,7 +57,7 @@
                         echo '<span>(' . $row["rating"] . ')</span>';
                     }
                 echo '</div>';
-                echo '<p>'.$row["price"].'</p>';
+                echo '<p>Ksh. '.number_format($row["price"], 2).'</p>';
                 echo '</div>';
             echo '</a>';
         }
@@ -87,7 +87,7 @@
                         echo '<span>(' . $row["rating"] . ')</span>';
                     }
                 echo '</div>';
-                echo '<p>'.$row["price"].'</p>';
+                echo '<p>Ksh. '.number_format($row["price"], 2).'</p>';
                 echo '</div>';
             echo '</a>';
         }
